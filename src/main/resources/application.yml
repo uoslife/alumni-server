@@ -13,3 +13,9 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true # console 창에 보여줄때 format 여부
         show_sql: true  # sql query console 창에 표시 여부
+
+springdoc:
+  path: /swagger-ui/index.html
+  swagger-ui:
+    tags-sorter: default
+    operations-sorter: method
