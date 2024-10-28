@@ -1,0 +1,72 @@
+package uoslife.alumniserver.domain.user.domain.entity
+
+import jakarta.persistence.*
+import uoslife.alumniserver.domain.bookmark.domain.entity.Bookmark
+import uoslife.alumniserver.domain.notification.domain.entity.Notification
+import uoslife.alumniserver.domain.post.domain.entity.Post
+import uoslife.alumniserver.domain.post.domain.entity.PostLike
+import uoslife.alumniserver.domain.post.domain.entity.PostReport
+import uoslife.alumniserver.domain.user.domain.entity.enums.Identity
+import uoslife.alumniserver.domain.user.domain.entity.enums.Job
+import uoslife.alumniserver.domain.user.domain.entity.enums.Occupation
+import uoslife.alumniserver.domain.user.domain.entity.enums.Role
+import uoslife.alumniserver.global.common.BaseEntity
+import java.time.LocalDateTime
+
+@Entity
+@Table(name = "users")
+class User (
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
+    val id: Long? = null,
+
+    @Column(nullable = false, unique = true)
+    var nickname: String,
+
+    // Q: role이 무슨 목적의 값인지 모르겠음.
+    @Enumerated(EnumType.STRING)
+    var role: Role,
+
+    @Column(name = "entrance_year")
+    var entranceYear: LocalDateTime? = null, // ex. 20xx-xx-xx
+
+    @Enumerated(EnumType.STRING)
+    var identity: Identity = Identity.UNDERGRADUATE,
+
+    @Enumerated(EnumType.STRING)
+    var occupation: Occupation,
+
+    @Enumerated(EnumType.STRING)
+    var job: Job,
+
+    @Column(name = "personal_email")
+    var personalEmail: String? = null,
+
+    @Column(name = "uos_email")
+    var uosEmail: String? = null,
+
+    @Column(name = "job_email")
+    var jobEmail: String? = null,
+
+    @Column(name = "job_certification")
+    var jobCertification: Boolean = false,
+
+    @Column(name = "show_personal_email_status")
+    var showPersonalEmailStatus: Boolean? = null,
+
+    // Q: OneToMany도 null safe하게 ? 태그를 달아줘야 할까요
+    @OneToMany(mappedBy = "user")
+    var post: MutableList<Post> = mutableListOf(),
+
+    @OneToMany(mappedBy = "user")
+    var postLike: MutableList<PostLike> = mutableListOf(),
+
+    @OneToMany(mappedBy = "user")
+    var postReport: MutableList<PostReport> = mutableListOf(),
+
+    @OneToMany(mappedBy = "user")
+    var bookmark: MutableList<Bookmark> = mutableListOf(),
+
+    @OneToMany(mappedBy = "user")
+    var notificaiton: MutableList<Notification>? = mutableListOf(),
+    ) : BaseEntity()
