@@ -4,6 +4,7 @@ plugins {
     id("org.springframework.boot") version "3.3.4"
     id("io.spring.dependency-management") version "1.1.6"
     kotlin("plugin.jpa") version "1.9.25"
+    id("com.diffplug.spotless").version("6.19.0")
 }
 
 group = "uoslife"
@@ -52,6 +53,17 @@ dependencies {
 
     // Dotenv 환경 변수 인식
     implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
+}
+
+configure<com.diffplug.gradle.spotless.SpotlessExtension> {
+    kotlin {
+        target("**/*.kt")
+        ktfmt()
+    }
+    kotlinGradle {
+        target("**/*.gradle.kts")
+        ktfmt()
+    }
 }
 
 kotlin {
