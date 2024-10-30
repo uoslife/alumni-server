@@ -19,19 +19,19 @@ class Comment(
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    val user: User? = null,
+    var user: User? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "parent_id", nullable = true)
-    var parent: Comment? = null,
+    @JoinColumn(name = "parentComment_id", nullable = true)
+    var parentComment: Comment? = null,
 
-    @OneToMany(mappedBy = "parent")
-    var child :MutableList<Comment> = mutableListOf(),
+    @OneToMany(mappedBy = "parentComment")
+    var childComment :MutableList<Comment> = mutableListOf(),
 
     var content: String? = null,
 
     @Column(name = "like_count")
-    var likeCount: Int? = null,
+    var likeCount: Int? = 0,
 
     @Column(name = "deleted_status")
     var deletedStatus: Boolean? = null,

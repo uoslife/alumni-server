@@ -6,10 +6,10 @@ import uoslife.alumniserver.domain.notification.domain.entity.Notification
 import uoslife.alumniserver.domain.post.domain.entity.Post
 import uoslife.alumniserver.domain.post.domain.entity.PostLike
 import uoslife.alumniserver.domain.post.domain.entity.PostReport
-import uoslife.alumniserver.domain.user.domain.entity.enums.Identity
-import uoslife.alumniserver.domain.user.domain.entity.enums.Job
-import uoslife.alumniserver.domain.user.domain.entity.enums.Occupation
-import uoslife.alumniserver.domain.user.domain.entity.enums.Role
+import uoslife.alumniserver.domain.user.domain.entity.enums.IdentityType
+import uoslife.alumniserver.domain.user.domain.entity.enums.JobType
+import uoslife.alumniserver.domain.user.domain.entity.enums.OccupationType
+import uoslife.alumniserver.domain.user.domain.entity.enums.RoleType
 import uoslife.alumniserver.global.common.BaseEntity
 import java.time.LocalDateTime
 
@@ -23,21 +23,20 @@ class User (
     @Column(nullable = false, unique = true)
     var nickname: String,
 
-    // Q: role이 무슨 목적의 값인지 모르겠음.
     @Enumerated(EnumType.STRING)
-    var role: Role,
+    var role: RoleType = RoleType.USER,
 
     @Column(name = "entrance_year")
     var entranceYear: LocalDateTime? = null, // ex. 20xx-xx-xx
 
     @Enumerated(EnumType.STRING)
-    var identity: Identity = Identity.UNDERGRADUATE,
+    var identity: IdentityType = IdentityType.UNDERGRADUATE,
 
     @Enumerated(EnumType.STRING)
-    var occupation: Occupation,
+    var occupation: OccupationType,
 
     @Enumerated(EnumType.STRING)
-    var job: Job,
+    var job: JobType,
 
     @Column(name = "personal_email")
     var personalEmail: String? = null,
@@ -52,7 +51,7 @@ class User (
     var jobCertification: Boolean = false,
 
     @Column(name = "show_personal_email_status")
-    var showPersonalEmailStatus: Boolean? = null,
+    var showPersonalEmailStatus: Boolean? = false,
 
     // Q: OneToMany도 null safe하게 ? 태그를 달아줘야 할까요
     @OneToMany(mappedBy = "user")

@@ -4,7 +4,7 @@ import jakarta.persistence.*
 import uoslife.alumniserver.global.common.BaseEntity
 
 @Entity
-@Table(name = "post_like")
+@Table(name = "post_image")
 class PostImage(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true)

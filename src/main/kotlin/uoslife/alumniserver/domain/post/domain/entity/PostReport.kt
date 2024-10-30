@@ -17,7 +17,7 @@ class PostReport(
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    val user: User? = null,
+    var user: User? = null,
 
-    var reason: String? = "",
+    var reason: String? = null,
 ) :BaseEntity();

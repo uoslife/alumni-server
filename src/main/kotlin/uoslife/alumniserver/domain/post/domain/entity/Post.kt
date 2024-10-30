@@ -6,7 +6,7 @@ import uoslife.alumniserver.domain.comment.domain.entity.Comment
 import uoslife.alumniserver.domain.notification.domain.entity.Notification
 import uoslife.alumniserver.domain.post.domain.entity.enums.type.PostType
 import uoslife.alumniserver.domain.user.domain.entity.User
-import uoslife.alumniserver.domain.user.domain.entity.enums.Occupation
+import uoslife.alumniserver.domain.user.domain.entity.enums.OccupationType
 import uoslife.alumniserver.global.common.BaseEntity
 
 @Entity
@@ -18,24 +18,24 @@ class Post(
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    val user: User? = null,
+    var user: User? = null,
 
     @Enumerated(EnumType.STRING)
     var type: PostType,
 
     // TODO: 초기값 enum의 첫 번째 값으로 변경
     @Enumerated(EnumType.STRING)
-    var occupation: Occupation? = null,
+    var occupation: OccupationType?,
 
     var title: String? = null,
 
     var content: String? = null,
 
     @Column(name = "like_count")
-    var likeCount: Int? = null,
+    var likeCount: Int? = 0,
 
     @Column(name = "comment_count")
-    var commentCount: Int? = null,
+    var commentCount: Int? = 0,
 
     @Column(name = "deleted_status")
     var deletedStatus: Boolean? = null,

@@ -1,6 +1,6 @@
 package uoslife.alumniserver.domain.user.domain.entity.enums
 
-enum class Identity {
+enum class IdentityType {
     UNDERGRADUATE,
     POSTGRADUATE,
     GRADUATE,

@@ -15,7 +15,7 @@ class Notification(
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    val user: User? = null,
+    var user: User? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "post_id", nullable = false)
@@ -32,5 +32,5 @@ class Notification(
     var type: NotificationType,
 
     @Column(name = "read_status", nullable = false)
-    var readStatus: Boolean? = null,
+    var readStatus: Boolean? = false,
 ) :BaseEntity();

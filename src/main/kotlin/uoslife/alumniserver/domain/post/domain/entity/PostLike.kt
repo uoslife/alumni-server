@@ -13,9 +13,9 @@ class PostLike(
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "post_id", nullable = false)
-    val post: Post? = null,
+    var post: Post? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    val user: User? = null,
+    var user: User? = null,
 ) :BaseEntity();
