@@ -34,13 +34,7 @@ class Comment(
     var likeCount: Int? = 0,
 
     @Column(name = "deleted_status")
-    var deletedStatus: Boolean? = null,
-
-    @OneToMany(mappedBy = "comment")
-    var commentLike: MutableList<CommentLike> = mutableListOf(),
-
-    @OneToMany(mappedBy = "comment")
-    var commentReport: MutableList<CommentReport> = mutableListOf(),
+    var deletedStatus: Boolean? = false,
 
     @OneToMany(mappedBy = "comment")
     var notificaiton: MutableList<Notification> = mutableListOf(),

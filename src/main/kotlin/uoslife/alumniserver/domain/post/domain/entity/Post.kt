@@ -38,16 +38,10 @@ class Post(
     var commentCount: Int? = 0,
 
     @Column(name = "deleted_status")
-    var deletedStatus: Boolean? = null,
-
-    @OneToMany(mappedBy = "post")
-    var postLike: MutableList<PostLike> = mutableListOf(),
+    var deletedStatus: Boolean? = false,
 
     @OneToMany(mappedBy = "post")
     var postImage: MutableList<PostImage> = mutableListOf(),
-
-    @OneToMany(mappedBy = "post")
-    var postReport: MutableList<PostReport> = mutableListOf(),
 
     @OneToMany(mappedBy = "post")
     var comment: MutableList<Comment> = mutableListOf(),
