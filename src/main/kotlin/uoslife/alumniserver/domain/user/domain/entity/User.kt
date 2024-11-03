@@ -33,10 +33,10 @@ class User (
     var identity: IdentityType = IdentityType.UNDERGRADUATE,
 
     @Enumerated(EnumType.STRING)
-    var occupation: OccupationType,
+    var occupation: OccupationType = OccupationType.FINANCE_OR_PROFESSIONAL,
 
     @Enumerated(EnumType.STRING)
-    var job: JobType,
+    var job: JobType = JobType.FINANCIAL_SERVICE,
 
     @Column(name = "personal_email")
     var personalEmail: String? = null,

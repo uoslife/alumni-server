@@ -21,11 +21,11 @@ class Post(
     var user: User? = null,
 
     @Enumerated(EnumType.STRING)
-    var type: PostType,
+    var type: PostType = PostType.JOB_APPLICATION_STORY,
 
     // TODO: 초기값 enum의 첫 번째 값으로 변경
     @Enumerated(EnumType.STRING)
-    var occupation: OccupationType?,
+    var occupation: OccupationType = OccupationType.FINANCE_OR_PROFESSIONAL,
 
     var title: String? = null,
 

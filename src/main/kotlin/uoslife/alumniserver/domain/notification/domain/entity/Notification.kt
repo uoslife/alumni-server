@@ -29,7 +29,7 @@ class Notification(
     var commenterId: Long,
 
     @Enumerated(EnumType.STRING)
-    var type: NotificationType,
+    var type: NotificationType = NotificationType.COMMENT,
 
     @Column(name = "read_status", nullable = false)
     var readStatus: Boolean? = false,
