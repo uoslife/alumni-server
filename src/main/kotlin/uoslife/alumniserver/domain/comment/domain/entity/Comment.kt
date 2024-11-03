@@ -14,15 +14,15 @@ class Comment(
     val id: Long? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "post_id", nullable = false)
+    @JoinColumn(name = "post_id", nullable = false, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var post: Post? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var user: User? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "parentComment_id", nullable = true)
+    @JoinColumn(name = "parentComment_id", nullable = true, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var parentComment: Comment? = null,
 
     @OneToMany(mappedBy = "parentComment")

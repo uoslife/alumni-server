@@ -14,15 +14,15 @@ class Notification(
     val id: Long? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var user: User? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "post_id", nullable = false)
+    @JoinColumn(name = "post_id", nullable = false, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var post: Post? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "comment", nullable = false)
+    @JoinColumn(name = "comment", nullable = false, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var comment: Comment? = null,
 
     // Q: commenterId를 어떻게 처리해야할지 모르겠어요

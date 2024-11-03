@@ -12,11 +12,11 @@ class CommentReport(
     val id: Long? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "comment", nullable = false)
+    @JoinColumn(name = "comment", nullable = false, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var comment: Comment? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var user: User? = null,
 
     var reason: String? = null,
