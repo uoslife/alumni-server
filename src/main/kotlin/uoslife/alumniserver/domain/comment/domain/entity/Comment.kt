@@ -22,7 +22,7 @@ class Comment(
     var user: User? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "parentComment_id", nullable = true, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    @JoinColumn(name = "parent_comment_id", nullable = true, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var parentComment: Comment? = null,
 
     @OneToMany(mappedBy = "parentComment")
