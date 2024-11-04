@@ -25,8 +25,9 @@ class Notification(
     @JoinColumn(name = "comment", nullable = false, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var comment: Comment? = null,
 
-    // Q: commenterId를 어떻게 처리해야할지 모르겠어요
-    var commenterId: Long,
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "commenter_id", nullable = false, foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    var commenterId: User? = null,
 
     @Enumerated(EnumType.STRING)
     var type: NotificationType = NotificationType.COMMENT,

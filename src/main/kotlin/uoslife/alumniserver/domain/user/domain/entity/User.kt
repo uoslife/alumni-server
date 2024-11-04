@@ -53,7 +53,6 @@ class User (
     @Column(name = "show_personal_email_status")
     var showPersonalEmailStatus: Boolean? = false,
 
-    // Q: OneToMany도 null safe하게 ? 태그를 달아줘야 할까요
     @OneToMany(mappedBy = "user")
     var post: MutableList<Post> = mutableListOf(),
 
